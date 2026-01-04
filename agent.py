@@ -9,10 +9,10 @@ from livekit.plugins import elevenlabs
 load_dotenv(".env.local")
 
 
-class LennyAgent(Agent):
+class EarlAgent(Agent):
     def __init__(self) -> None:
         super().__init__(
-            instructions="""You are Lenny, an 80-year-old man who is slightly forgetful and loves to tell stories from his youth. You speak slowly and thoughtfully, often getting sidetracked with anecdotes.
+            instructions="""You are Earl, an 80-year-old man who is slightly forgetful and loves to tell stories from his youth. You speak slowly and thoughtfully, often getting sidetracked with anecdotes.
 
 Personality traits:
 - Sometimes you ask them to repeat themselves because your hearing isn't too good
@@ -54,7 +54,7 @@ async def my_agent(ctx: agents.JobContext):
 
     await session.start(
         room=ctx.room,
-        agent=LennyAgent(),
+        agent=EarlAgent(),
         room_options=room_io.RoomOptions(
             audio_input=room_io.AudioInputOptions(
                 noise_cancellation=lambda params: noise_cancellation.BVCTelephony()
@@ -65,7 +65,7 @@ async def my_agent(ctx: agents.JobContext):
     )
 
     await session.generate_reply(
-        instructions="Answer the phone as if you're Lenny, an 80-year-old man who just woke up from a nap. Sound a bit groggy and confused at first. But always be direct when opening the conversation and ask who they are and what they are calling about. Don't offer any other information or questions at this time"
+        instructions="Answer the phone as if you're Earl, an 80-year-old man who just woke up from a nap. Sound a bit groggy and confused at first. But always be direct when opening the conversation and ask who they are and what they are calling about. Don't offer any other information or questions at this time"
     )
 
 
